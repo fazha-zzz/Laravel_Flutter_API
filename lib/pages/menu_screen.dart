@@ -1,7 +1,9 @@
+import 'package:auth/pages/Buku/list_buku_screen.dart';
+import 'package:auth/pages/Kategori/list_kategori_screen.dart';
+import 'package:auth/pages/peminjaman/list_peminjaman_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:auth/pages/home_screen.dart';
 import 'package:auth/pages/posts/list_post_screen.dart';
-// import 'package:auth/pages/product/product_list_screen.dart';
 import 'package:auth/pages/profile_screen.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -16,7 +18,9 @@ class _MenuScreenState extends State<MenuScreen> {
 
   final List<Widget> _pages = [
     const HomeScreen(),
-    const ListPostScreen(),
+    const BukuListScreen(),
+    const ListKategoriScreen(),
+    const ListPeminjamanScreen(),
     const ProfileScreen(),
   ];
 
@@ -42,7 +46,7 @@ class _MenuScreenState extends State<MenuScreen> {
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(20),
           child: BottomNavigationBar(
             currentIndex: _currentIndex,
             onTap: (index) => setState(() => _currentIndex = index),
@@ -62,9 +66,16 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.article_outlined),
-                label: 'Posts',
+                label: '  Bukus',
               ),
-              
+               BottomNavigationBarItem(
+                icon: Icon(Icons.article_outlined),
+                label: 'kategori',
+              ),
+               BottomNavigationBarItem(
+                icon: Icon(Icons.article_outlined),
+                label: 'Peminjaman',
+              ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person_outline),
                 label: 'Profile',

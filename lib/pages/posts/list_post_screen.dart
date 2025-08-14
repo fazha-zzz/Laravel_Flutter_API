@@ -1,4 +1,6 @@
 import 'package:auth/models/post_model.dart';
+import 'package:auth/pages/posts/create_post.dart';
+import 'package:auth/pages/posts/detail_post_screen.dart';
 import 'package:auth/services/post_service.dart';
 import 'package:flutter/material.dart';
 
@@ -48,16 +50,16 @@ class _ListPostScreenState extends State<ListPostScreen> {
         title: const Text('My Posts'),
         actions: [
           IconButton(onPressed: _refreshPosts, icon: const Icon(Icons.refresh)),
-          // IconButton(
-          //   onPressed: () async {
-          //     final result = await Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (_) => const CreatePostScree()),
-          //     );
-          //     if (result == true) _refreshPosts();
-          //   },
-          //   icon: const Icon(Icons.add),
-          // ),
+          IconButton(
+            onPressed: () async {
+              final result = await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const CreatePostScreen()),
+              );
+              if (result == true) _refreshPosts();
+            },
+            icon: const Icon(Icons.add),
+          ),
         ],
       ),
       body: FutureBuilder<PostModel>(
@@ -82,15 +84,15 @@ class _ListPostScreenState extends State<ListPostScreen> {
               return Card(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: ListTile(
-                  // onTap: () async {
-                  //   final result = await Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (_) => PostDetailScreen(post: post),
-                  //     ),
-                  //   );
-                  //   if (result == true) _refreshPosts();
-                  // },
+                  onTap: () async {
+                    final result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => PostDetailScreen(post: post),
+                      ),
+                    );
+                    if (result == true) _refreshPosts();
+                  },
                   leading: post.foto != null && post.foto!.isNotEmpty
                       ? Image.network(
                           'http://127.0.0.1:8000/storage/${post.foto!}',
